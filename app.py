@@ -106,7 +106,7 @@ col_graf3, col_graf4 = st.columns(2)
 
 with col_graf3:
     if not df_filtrado.empty:
-        remoto_contagem = df_filtrado["Remoto"].value_counts().reset_index()
+        remoto_contagem = df_filtrado["modelo_trabalho"].value_counts().reset_index()
         remoto_contagem.columns = ['modelo_trabalho', 'quantidade']
         grafico_remoto = px.pie(
             remoto_contagem,
@@ -138,4 +138,5 @@ with col_graf4:
 
 # --- Tabela de Dados Detalhados ---
 st.subheader("Dados Detalhados")
+
 st.dataframe(df_filtrado)
