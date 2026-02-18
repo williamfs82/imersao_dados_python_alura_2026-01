@@ -11,7 +11,10 @@ st.set_page_config(
 )
 
 # --- Carregamento dos dados ---
-df = pd.read_csv("https://raw.githubusercontent.com/vqrca/dashboard_salarios_dados/refs/heads/main/dados-imersao-final.csv")
+# df = pd.read_csv("https://raw.githubusercontent.com/vqrca/dashboard_salarios_dados/refs/heads/main/dados-imersao-final.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/williamfs82/imersao_dados_python_alura_2026-01/refs/heads/main/dados_imersao.csv")
+
+df.head()
 
 # --- Barra Lateral (Filtros) ---
 st.sidebar.header("🔍 Filtros")
@@ -103,11 +106,11 @@ col_graf3, col_graf4 = st.columns(2)
 
 with col_graf3:
     if not df_filtrado.empty:
-        remoto_contagem = df_filtrado['remoto'].value_counts().reset_index()
-        remoto_contagem.columns = ['tipo_trabalho', 'quantidade']
+        remoto_contagem = df_filtrado['Remoto'].value_counts().reset_index()
+        remoto_contagem.columns = ['modelo_trabalho', 'quantidade']
         grafico_remoto = px.pie(
             remoto_contagem,
-            names='tipo_trabalho',
+            names='modelo_trabalho',
             values='quantidade',
             title='Proporção dos Tipos de Trabalho',
             hole=0.5
